@@ -6,7 +6,7 @@
   <groupId>com.nagpalaot</groupId>
   <artifactId>lrdrtester</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.9</version>
 
   <name>lrdrtester</name>
   <!-- FIXME change it to the project's website -->
@@ -15,7 +15,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
-    <slf4j.version>2.17.1</slf4j.version>
+    <slf4j.version>2.0.17</slf4j.version>
     <logback.version>1.5.38</logback.version>
     <apache.poi.version>4.1.1</apache.poi.version>
   </properties>
@@ -72,6 +72,19 @@
   </dependencies>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.nagpalaot.lrdrtester.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
