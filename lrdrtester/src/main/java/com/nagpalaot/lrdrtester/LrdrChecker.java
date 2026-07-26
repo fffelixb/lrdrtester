@@ -36,9 +36,9 @@ public class LrdrChecker {
 		}
 		lrdrExtract.getLrdrLoanRecords();
 		if(success) {
-			log.info("Completed extracting data from " + file.getName() + " without any errors.\n\n");
+			log.info("Completed extracting data from " + file.getName() + " without any structural errors.\n\n");
 		} else {
-			log.info("Completed extracting data from " + file.getName() + " with errors.\n\n");
+			log.info("Aborted extracting data from " + file.getName() + " because of structural errors.\n\n");
 		}
 		
 	}

@@ -5,6 +5,7 @@
 
   <groupId>com.nagpalaot</groupId>
   <artifactId>lrdrtester</artifactId>
+  <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
 
   <name>lrdrtester</name>

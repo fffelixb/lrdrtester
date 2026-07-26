@@ -24,12 +24,15 @@ import com.nagpalaot.ecdra.constants.Usage1Code;
 import com.nagpalaot.ecdra.lrdr.Lrdr;
 import com.nagpalaot.ecdra.lrdr.LrdrLoanRecord;
 import com.nagpalaot.ecdra.lrdr.LrdrRecordType;
+import com.nagpalaot.ecdra.util.RowFastExcelValidator;
 
 public abstract class LrdrParser {
 
 	private final static Logger log = LoggerFactory.getLogger(LrdrParser.class);
 
 	private DateFormat df = new SimpleDateFormat("yyyyMMdd");
+	
+	private RowFastExcelValidator validator = new RowFastExcelValidator();
 	
 	public final static int POS_RECORD_TYPE = 0;
 	public final static int POS_ORG_CODE = 1;
@@ -204,6 +207,10 @@ public abstract class LrdrParser {
 	protected LrdrLoanRecord fillInLoanInfo(Row row, Lrdr lrdr, int rowIndex) throws ParseException {
 		if(lrdr == null) {
 			throw new IllegalArgumentException("The extract does not have a header therefore it is a corrupt file.");
+		}
+		String validation = validator.validate(row);
+		if(validation != null) {
+			log.error("Bad loan data: " + validation);
 		}
 		LrdrLoanRecord result = new LrdrLoanRecord();
 		result.setStudentSSN(readString(row.getCell(POS_SSN)));
